@@ -1,0 +1,27 @@
+{% extends './basic.html' %} {% load static %} {% block title %} Quotation {%endblock title%}
+{%block css %} {%endblock css %} {% block body %}
+
+<!-- Page Wrapper -->
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+      <!-- Sidebar Toggle (Topbar) -->
+      <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+        <i class="fa fa-bars"></i>
+      </button>
+    </nav>
+
+<div class='container p-3'>
+     <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Company List</h1>
+     </div>
+  <ul class="navbar-nav sidebar sidebar-dark accordion m-3 p-3">
+      {% for company in companies %}
+      <li class="nav-item"><a class="nav-link" style="color: #858796;" href="/company/{{company.id}}/update/">
+          <span> {{ company.company_name }}</span></a></li>
+      {% endfor %}
+  </ul>
+</div>
+</div>
+
+{%endblock body%}

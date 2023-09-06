@@ -1,0 +1,32 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+<head>
+  <title>Company List</title>
+</head>
+<body>
+  <div class="container mt-3 p-5">
+  <h1 class='mt-5'>Company List</h1>
+  <ul>
+      {% for company in companies %}
+      <li>{{ company.company_name }}</li>
+      {% endfor %}
+  </ul>
+</div>
+</body>
+{% endblock %}
+
+<!-- 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+      <div class ="addHotel"> 
+        <h2> Add Hotel details </h2>
+        <form class="site-form" action ="{% url 'quotation:addHotel'}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{form.as_p}}
+          <input type="submit" value="Add Hotel">
+        </form>
+      </div>
+</html> -->

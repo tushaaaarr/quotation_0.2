@@ -1,0 +1,28 @@
+{% extends 'home/basic.html' %} {% load static %} {% block title %} Quotation {%endblock title%}
+{%block css %} {%endblock css %} {% block body %}
+
+<div id="content-wrapper" class="d-flex flex-column">
+ <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+      <!-- Sidebar Toggle (Topbar) -->
+      <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+        <i class="fa fa-bars"></i>
+      </button>
+    </nav>
+
+
+  <div class='container p-3'>
+   <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Update Company</h1>
+     </div>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update Company</button>
+  </form>
+
+
+  </div>
+</div>
+
+{%endblock body%}
