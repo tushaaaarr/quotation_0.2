@@ -454,6 +454,15 @@ def get_form_data(request):
         'diningroom_pic':"127.0.0.1:8000/uploads/" + str(hotel_instance.diningroom_pic),
         })
         itinery_data['todal_days_details'] = day_lst
+        total_kes = 0
+        total_usd = 0
+        for room in roomData:
+            if room['currency'] == 'KES':
+                total_kes = total_kes + room['total_child_adult']
+
+            if room['currency'] == 'USD':
+                total_usd = total_usd + room['total_child_adult']
+        
         OpData = {   
             "country":country,
             "hotel_name":hotel_instance.hotel_name,
@@ -476,10 +485,12 @@ def get_form_data(request):
             "total_adult_rate":total_adult_rate,
             "total_child_rate":total_child_rate,
             "total_child_adult":total_child_rate + total_adult_rate,
-            # 'currency':HotelRateInstance[0].rate_currency,
+            'total_usd':total_usd,
+            'total_kes':total_kes,
             "company_details":company_details,
             'quotation_id':Quotation_ins.quotation_id
         }
+
         print(OpData)
         return JsonResponse(OpData,safe=False)
 
