@@ -8,10 +8,7 @@
     <meta name="author" content="" />
     <title>Dashboard</title>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'css/sb-admin-2.min.css' %}" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 
@@ -21,10 +18,7 @@
   </head>
   <body id="page-top">
     <div id="wrapper">
-      <ul
-        class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion m-3 p-3"
-        id="accordionSidebar"
-      >
+      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion m-3 p-3" id="accordionSidebar">
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
           <div class="sidebar-brand-icon rotate-n-15">
@@ -38,45 +32,33 @@
         <!-- Nav Item - Dashboard -->
         {% if request.user.is_authenticated %}
 
-            <li class="nav-item active">
-        <a class="nav-link" href="{% url 'logout' %}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>logout</span></a>
-      </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'logout' %}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>logout</span></a
+          >
+        </li>
 
-
-      {% else %}
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'login' %}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Login</span></a>
-      </li>
-          <li class="nav-item active">
+        {% else %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'login' %}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Login</span></a
+          >
+        </li>
+        <li class="nav-item active">
           <a class="nav-link" href="{% url 'register' %}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Register</span></a
           >
         </li>
-      {% endif %}
-
+        {% endif %}
 
         <li class="nav-item active">
-          <a
-            class="nav-link collapsed"
-            href="#"
-            data-toggle="collapse"
-            data-target="#collapseTwo"
-            aria-expanded="true"
-            aria-controls="collapseTwo"
-          >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <span>Hotels</span>
           </a>
-          <div
-            id="collapseTwo"
-            class="collapse"
-            aria-labelledby="headingTwo"
-            data-parent="#accordionSidebar"
-          >
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="/hotel/list"><span>Hotels</span></a>
               <a class="collapse-item" href="/hotelrate/list"><span>Hotel Rates</span></a>
@@ -87,22 +69,8 @@
         </li>
 
         <li class="nav-item active">
-          <a
-            class="nav-link collapsed"
-            href="#"
-            data-toggle="collapse"
-            data-target="#collapseCompany"
-            aria-expanded="true"
-            aria-controls="collapseCompany"
-          >
-            <span>Company</span></a
-          >
-          <div
-            id="collapseCompany"
-            class="collapse"
-            aria-labelledby="headingTwo"
-            data-parent="#accordionSidebar"
-          >
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCompany" aria-expanded="true" aria-controls="collapseCompany"> <span>Company</span></a>
+          <div id="collapseCompany" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="/company/list"><span>Companies</span></a>
               <a class="collapse-item" href="/company/add"><span>Add Company</span></a>
@@ -115,12 +83,12 @@
             <span>Create Quotation</span></a
           >
         </li>
-<!--        <li class="nav-item active">-->
-<!--          <a class="nav-link" href="{% url 'logout' %}">-->
-<!--            <i class="fas fa-fw fa-tachometer-alt"></i>-->
-<!--            <span>logout</span></a-->
-<!--          >-->
-<!--        </li>-->
+        <!--        <li class="nav-item active">-->
+        <!--          <a class="nav-link" href="{% url 'logout' %}">-->
+        <!--            <i class="fas fa-fw fa-tachometer-alt"></i>-->
+        <!--            <span>logout</span></a-->
+        <!--          >-->
+        <!--        </li>-->
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block" />
@@ -136,637 +104,637 @@
     <!-- Add Room -->
     <script>
 
-      var globalFdata;
+            var globalFdata;
 
-               // Checking dates Availabilty Start=====>
+                     // Checking dates Availabilty Start=====>
 
-                 let dateArray= {{ available_dates|safe}}
+                       let dateArray= {{ available_dates|safe}}
 
-                 // console.log(dateArray)
+                       // console.log(dateArray)
 
-                 function checkDateRange() {
-                     const fromDate = document.getElementById("date_frm").value;
-                     const toDate = document.getElementById("date_to").value;
+                       function checkDateRange() {
+                           const fromDate = document.getElementById("date_frm").value;
+                           const toDate = document.getElementById("date_to").value;
 
 
-                     // Compare the selected date range with each array element
-                     for (let i = 0; i < dateArray.length; i++) {
-                       const item = dateArray[i];
-                       const from = item.date_applicable_from;
-                       const to = item.date_applicable_to;
+                           // Compare the selected date range with each array element
+                           for (let i = 0; i < dateArray.length; i++) {
+                             const item = dateArray[i];
+                             const from = item.date_applicable_from;
+                             const to = item.date_applicable_to;
 
-                       if (fromDate >= from   && toDate <= to  ) {
+                             if (fromDate >= from   && toDate <= to  ) {
 
-                         console.log("Date range matches array element:", item);
-                         document.getElementById("chkdates").style.display="none";
-                         return
-                         break
-                       }
-                       else{
+                               console.log("Date range matches array element:", item);
+                               document.getElementById("chkdates").style.display="none";
+                               return
+                               break
+                             }
+                             else{
 
-                         document.getElementById("chkdates").style.display="block";
-                        console.log("dates not avail")
-                       }
-                     }
+                               document.getElementById("chkdates").style.display="block";
+                              console.log("dates not avail")
+                             }
+                           }
 
-                   }
-               // Checking dates Availabilty End=====>
-
-
-                   var roomData = [];
-                   var trooms = 0;
-                   function addRoom() {
-                     roomData = [];
-                     trooms += 1;
-                     // Get the container element for the room requests
-                     var roomContainer = document.getElementById("roomContainer");
-
-                     // Create a new div element for the room request
-                     var roomDiv = document.createElement("div");
-                     roomDiv.className = "room-request";
-
-                     // Clone the first room request div to create a new set of input fields
-                     var clonedRoomRequest = document.querySelector(".room-request:first-child").cloneNode(true);
-
-                     // Clear the values of the cloned input fields
-                     var clonedInputs = clonedRoomRequest.querySelectorAll("input, select");
-                     clonedInputs.forEach(function (input) {
-                       input.value = "";
-                       var inputId = input.getAttribute("id");
-                       var inputName = input.getAttribute("name");
-                       // Append a number to the id and name attributes
-                       input.setAttribute("id", inputId + roomContainer.childElementCount);
-                       input.setAttribute("name", inputName + roomContainer.childElementCount);
-                     });
-
-                     var clonedLabels = clonedRoomRequest.querySelectorAll("label");
-                     clonedLabels.forEach(function (label) {
-                       var labelFor = label.getAttribute("for");
-                       // Append a number to the for attribute
-                       label.setAttribute("for", labelFor + roomContainer.childElementCount);
-                     });
-
-                     // Append the cloned room request to the new div
-                     roomDiv.appendChild(clonedRoomRequest);
-
-                     // Append the new room div to the container
-                     roomContainer.appendChild(roomDiv);
-                     var room = {};
-                     for (x = 0; x <= trooms; x++) {
-                       let incount = x == 0 ? "" : x;
-
-                       room = {
-                         package_type: document.querySelector(`#package_type${incount}`).value,
-                         room_category: document.querySelector(`#room_category${incount}`).value,
-                         room_type: document.querySelector(`#room_type${incount}`).value,
-                         number_of_room_category: document.querySelector(`#number_of_room_category${incount}`).value,
-
-                         Adult_count: document.querySelector(`#Adult_count${incount}`).value,
-                         adult_resident_type: document.querySelector(`#adult_resident_type${incount}`).value,
-
-                         child_count: document.querySelector(`#child_count${incount}`).value,
-                         child_resident_type: document.querySelector(`#child_resident_type${incount}`).value,
-
-
-                         old_child_sharing: document.querySelector(`#old_child_sharing${incount}`).value,
-                         young_child_sharing: document.querySelector(`#young_child_sharing${incount}`).value,
-                         // Add other room data fields here
-                       };
-
-                       if (roomData.length < trooms + 1) {
-                         roomData = [...roomData, room];
-                       }
-                     }
-                     console.log(roomData);
-                     // Add the room data to the roomData array
-                   }
-
-                   // Attach the addRoom function to the "Add Room" button's click event
-                   var addButton = document.querySelector("#addRoombtn");
-                   addButton.addEventListener("click", addRoom);
-
-                   // Add Room Finish
-
-                   function handlesubmit(e) {
-                     e.preventDefault();
-                     console.log("here")
-                     document.getElementById('loader-form').style.display="block";
-                     document.getElementById("err").style.display="none"
-                     document.getElementById("sub-btn").style.display="none"
-
-                     roomData = [];
-                     var room = {};
-                     for (x = 0; x <= trooms; x++) {
-                       let incount = x == 0 ? "" : x;
-
-                       room = {
-                         package_type: document.querySelector(`#package_type${incount}`).value,
-                         room_category: document.querySelector(`#room_category${incount}`).value,
-                         room_type: document.querySelector(`#room_type${incount}`).value,
-                         number_of_room_category: document.querySelector(`#number_of_room_category${incount}`).value,
-                         Adult_count: document.querySelector(`#Adult_count${incount}`).value,
-                         adult_resident_type: document.querySelector(`#adult_resident_type${incount}`).value,
-                         child_count: document.querySelector(`#child_count${incount}`).value,
-                         child_resident_type: document.querySelector(`#child_resident_type${incount}`).value,
-                         old_child_sharing: document.querySelector(`#old_child_sharing${incount}`).value,
-                         young_child_sharing: document.querySelector(`#young_child_sharing${incount}`).value,
-                         // Add other room data fields here
-                       };
-
-                       if (roomData.length < trooms + 1) {
-                         roomData = [...roomData, room];
-                       }
-                     }
-
-                     const FD = new FormData();
-                     let formData = new FormData(document.getElementById("quote")); //formdata object
-
-                     for (const [name, value] of formData.entries()) {
-                       if (
-                         !name.includes("Adult_count") &&
-                         !name.includes("adult_resident_type") &&
-                         !name.includes("child_count") &&
-                         !name.includes("child_resident_type") &&
-                         !name.includes("number_of_room_category") &&
-                         !name.includes("old_child_sharing") &&
-                         !name.includes("package_type") &&
-                         !name.includes("room_category") &&
-                         !name.includes("room_type") &&
-                         !name.includes("young_child_sharing")
-                       ) {
-                         FD.append(name, value);
-                       }
-                     }
-
-                     // FD.append('age', 20);
-                     const config = {
-                       headers: { "content-type": "multipart/form-data" },
-                     };
-
-                     let formDataJson = {};
-                     for (let [key, value] of FD.entries()) {
-                       formDataJson[key] = value;
-                     }
-
-                     formDataJson = { ...formDataJson, roomData };
-                     // Print the JSON string
-                     console.log(formDataJson);
-                     console.log(formDataJson.hotel_name);
-                     let totalRooms = 0;
-                     var xhttp = new XMLHttpRequest();
-                     xhttp.onreadystatechange = function () {
-                       if (this.readyState == 4 && this.status == 200 && this.status < 300) {
-
-       // PDF DOC MODAL DATA ENTRY start============>
-                         document.getElementById('loader-form').style.display="none";
-                         document.getElementById('prev-down').style.display="block";
-                         document.getElementById("err").style.display="none"
-                         document.getElementById("sub-btn").style.display="none"
-                         document.getElementById("itni-btn").style.display="block"
-
-
-                         console.log(this.responseText);
-                         let fdata = JSON.parse(this.responseText);
-                         globalFdata = fdata;
-                         console.log(fdata);
-                         let tdate = new Date();
-                        // imgs watermark, header, footer start===>
-                        document.getElementById("watermarkImg").style = `
-                          background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
-                            url('http://127.0.0.1:8000/uploads/${fdata.company_details[0].company_logo_watermark}');
-                          background-position: center;
-                          background-size: contain;
-                          background-repeat: no-repeat;
-                          `;
-
-                        document.getElementById("headerImg").src = `http://127.0.0.1:8000/uploads/${fdata.company_details[0].company_header}`;
-
-                        document.getElementById("footerImg").src = `http://127.0.0.1:8000/uploads/${fdata.company_details[0].company_footer}`;
-
-                        // imgs end ===>
-
-                        //  document.getElementById("mod_company").innerHTML = fdata.company_details[0].company_name;
-                        //  document.getElementById("mod_address").innerHTML = fdata.hotel_name +", "+ fdata.area + "," + fdata.country;
-                         document.getElementById("mod_HandA").innerHTML =fdata.hotel_name+ ", " + fdata.area + ", " + fdata.country;
-                         document.getElementById("mod_date").innerHTML = tdate.toLocaleDateString();
-                         document.getElementById("mod_id").innerHTML = fdata.quotation_id;
-                         document.getElementById("mod_fromdt").innerHTML = fdata.date_frm;
-                         document.getElementById("mod_todt").innerHTML = fdata.date_to;
-                         document.getElementById("mod_travAdult").innerHTML = fdata.total_adult_travellers;
-                         document.getElementById("mod_travChild").innerHTML = fdata.total_child_travellers;
-                         fdata.roomData.map((ini) => {
-                           totalRooms += ini.total_rooms;
-                         });
-                         document.getElementById("mod_totalRoom").innerHTML = fdata.total_rooms;
-                         // document.getElementById("row1col1").innerHTML =
-                         //   fdata.hotel_name + ", " + fdata.package_type;
-                         // document.getElementById("row1col3").innerHTML = fdata.adult_res ;
-
-                         // // Row 2
-
-                         // document.getElementById("row2col1").innerHTML =
-                         //   fdata.hotel_name + ", " + fdata.package_type;
-                         // document.getElementById("row2col2").innerHTML = fdata.adult_res + fdata.adult_res;
-
-                         let totalMoney = 0;
-                         fdata.roomData.map((ini,i) => {
-
-
-                           let tr = document.createElement("tr");
-                           let td1 = document.createElement("td");
-                           td1.innerHTML = ini.no_of_rooms_for_category_type;
-                           let td2 = document.createElement("td");
-                           td2.innerHTML = fdata.hotel_name + ", " + ini.package_type + ", " + ini.room_category;
-                          //  `${ini.young_child_sharing_rate?ini.young_child_sharing_rate+'(Total Young childern sharing rate) x'+fdata.itinery_data.todal_days_details[0].total_days+ '(Total Days)  =  '+ini.young_child_sharing_rate*fdata.itinery_data.todal_days_details[0].total_days :''}`+ `<br/>` +
-                          //  `${ini.young_child_sharing_rate?ini.old_child_sharing_rate+'(Total Old childern sharing rate) x'+fdata.itinery_data.todal_days_details[0].total_days+ '(Total Days)  =  '+ini.old_child_sharing_rate*fdata.itinery_data.todal_days_details[0].total_days :''}`;
-                           let td3 = document.createElement("td");
-                           td3.innerHTML = fdata.currency=="KES"?ini.total_child_adult:"-";
-                           let td4 = document.createElement("td");
-                           td4.innerHTML = fdata.currency!="KES"?ini.total_child_adult:"-";
-
-                           tr.appendChild(td1);
-                           tr.appendChild(td2);
-                           tr.appendChild(td3);
-                           tr.appendChild(td4);
-
-                           document.getElementById("datatable").appendChild(tr);
-
-                           let ttr=document.createElement("tr");
-                           let ttd1 = document.createElement("td");
-                           ttd1.innerHTML = "Total";
-                           let ttd2 = document.createElement("td");
-                           ttd2.innerHTML = "";
-                           let ttd3 = document.createElement("td");
-                           ttd3.innerHTML = fdata.currency=="KES"?fdata.total_child_adult:"-";
-                           let ttd4 = document.createElement("td");
-                           ttd4.innerHTML = fdata.currency!="KES"?fdata.total_child_adult:"-";
-
-                           ttr.appendChild(ttd1);
-                           ttr.appendChild(ttd2);
-                           ttr.appendChild(ttd3);
-                           ttr.appendChild(ttd4);
-                           console.log(fdata.roomData.length)
-                           console.log(i)
-                           if(fdata.roomData.length==i+1){ console.log("here"); document.getElementById("datatable").appendChild(ttr);}
-                         });
-
-       // PDF DOC MODAL DATA ENTRY end============>
-
-      // DOCX DOC MODAL DATA ENTRY start ========>
-      let dParent =  document.getElementById("docxTable");
-                         let companyName, tripName;
-                           companyName =document.createElement("tr");
-                           tripName = document.createElement("tr");
-
-                           // companyName.style="margin-bottom:10px; padding:10px; border: 2px solid rgba(0,0,0,0.5)";
-                           // tripName.style="margin-bottom:10px; padding:10px; border: 2px solid rgba(0,0,0,0.5)";
-
-                           let compTD, tripTD, compTDImg
-                           compTD = document.createElement('td')
-                           tripTD = document.createElement('td')
-                           compTD.align = "center";
-                           compTD.bgColor = "white";
-                           compTDImg = document.createElement('img')
-                           compTDImg.height="160";
-                           compTDImg.width="600";
-                           compTDImg.src=`http://127.0.0.1:8000/uploads/${fdata.company_details[0].company_header}`;
-
-                           tripTD.align = "center";
-
-                           compTD.appendChild(compTDImg);
-                           companyName.appendChild(compTD);
-
-                           tripTD.innerHTML = `<h5>Trip Name: 7 days in Savannah</h5>`;
-                           tripName.appendChild(tripTD);
-
-                         dParent.append(companyName, tripName)
-                         let x = 0;
-                         fdata.itinery_data.todal_days_details.map((ini,i)=>{
-
-                           let  hotelName, hotelDesc, hotelCpic;
-                           hotelName = document.createElement("tr");
-                           hotelDesc =document.createElement("tr");
-                           hotelCpic = document.createElement("tr");
-
-                           let cpic = document.createElement("img");
-
-                           let hotelcpicTD = document.createElement("td");
-                           let hotelTD = document.createElement("td");
-                           let hoteldescTD = document.createElement("td");
-                           hotelTD.align="center";
-                           hotelTD.bgColor = "white";
-
-                           hoteldescTD.align="center";
-
-
-                             cpic.height="160";
-                             cpic.width="600";
-                             cpic.src="http://"+ini.receptionroom_pic;
-
-                             hotelcpicTD.appendChild(cpic);
-                             hotelTD.innerHTML = `<h5><font color="#121212"> Day ${i+1}: ${ini.hotel_name}</font></h5>`;
-                             hoteldescTD.innerHTML = `<p>${ini.description_first_day}</p>`
-
-                             hotelName.appendChild(hotelTD);
-                             hotelDesc.appendChild(hoteldescTD);
-                             hotelCpic.appendChild(hotelcpicTD);
-
-                             dParent.append(hotelName, hotelDesc, hotelCpic);
-
-                       // Days Loop Start here====>
-                           [...Array(ini.total_days-2)].map((m,n)=>{
-
-
-                           hotelName = document.createElement("tr");
-                           hotelDesc =document.createElement("tr");
-                           hotelCpic = document.createElement("tr");
-
-                           cpic = document.createElement("img");
-
-                           hotelcpicTD = document.createElement("td");
-                           hotelTD = document.createElement("td");
-                           hoteldescTD = document.createElement("td");
-
-                             hotelTD.align="center";
-                             hotelTD.bgColor = "white";
-                             hoteldescTD.align="center";
-
-                             cpic.height="160";
-                             cpic.width="600";
-
-                             cpic.src="http://"+ini.bedroom_pic;
-
-                             hotelcpicTD.appendChild(cpic);
-
-                             hotelTD.innerHTML = `<h5><font color="#121212">Day ${n+2}: ${ini.hotel_name}</font></h5>`;
-                             hoteldescTD.innerHTML = `<p>${ini.description_full_day}</p>`
-
-                             hotelName.appendChild(hotelTD);
-                             hotelDesc.appendChild(hoteldescTD);
-                             hotelCpic.appendChild(hotelcpicTD);
-
-                             dParent.append(hotelName, hotelDesc);
-
-                           });
-                         // Days Loop End here====>
-
-                             hotelName, hotelDesc, hotelCpic;
-                             hotelName = document.createElement("tr");
-                             hotelDesc =document.createElement("tr");
-                             hotelCpic = document.createElement("tr");
-
-                             cpic = document.createElement("img");
-
-                             hotelcpicTD = document.createElement("td");
-                             hotelTD = document.createElement("td");
-                             hoteldescTD = document.createElement("td");
-                               hotelTD.align="center";
-                               hotelTD.bgColor = "white";
-                               hoteldescTD.align="center";
-
-                             cpic.height="160";
-                             cpic.width="600";
-                             cpic.src="http://"+ini.diningroom_pic;
-
-                             hotelcpicTD.appendChild(cpic);
-
-                             hotelTD.innerHTML = `<h5><font color="#121212">Day ${ini.total_days}: ${ini.hotel_name}</font></h5>`;
-                             hoteldescTD.innerHTML = `<p>${ini.description_last_day}</p>`
-
-                             hotelName.appendChild(hotelTD);
-                             hotelDesc.appendChild(hoteldescTD);
-                             hotelCpic.appendChild(hotelcpicTD);
-
-
-
-
-                             dParent.append(hotelName, hotelDesc, hotelCpic)
-
-
-                             // Adding trip includes
-
-                              hotelName, hotelDesc;
-                             hotelName = document.createElement("tr");
-                             hotelDesc =document.createElement("tr");
-
-
-
-
-
-                             hotelTD = document.createElement("td");
-                             hoteldescTD = document.createElement("td");
-                               hotelTD.align="center";
-                               hotelTD.bgColor = "white";
-                               hotelTD.align="center";
-
-
-
-                             hotelTD.innerHTML = `<h5><font color="#121212">Trip excludes:</font></h5>`;
-                             hoteldescTD.innerHTML = `<p>International airfares
-visa fees,
-drinks,
-supreme bush meals,
-balloon safari</p>`
-
-                             hotelName.appendChild(hotelTD);
-                             hotelDesc.appendChild(hoteldescTD);
-
-
-
-
-
-                             dParent.append(hotelName, hotelDesc)
-
-
-              // trip include ends here
-
-
-
-              // optional includes
-
-                              hotelName, hotelDesc;
-                             hotelName = document.createElement("tr");
-                             hotelDesc =document.createElement("tr");
-
-
-
-
-
-                             hotelTD = document.createElement("td");
-                             hoteldescTD = document.createElement("td");
-                               hotelTD.align="center";
-                               hotelTD.bgColor = "white";
-                               hotelTD.align="center";
-
-
-
-                             hotelTD.innerHTML = `<h5><font color="#121212">Optional Extras:</font></h5>`;
-                             hoteldescTD.innerHTML = `<p>supreme bush meals at 120USD pp
-balloon safari at 1000 USD pp</p>`
-
-                             hotelName.appendChild(hotelTD);
-                             hotelDesc.appendChild(hoteldescTD);
-
-
-
-
-
-                             dParent.append(hotelName, hotelDesc)
-
-
-              // optional include ends here
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            // Adding Footer in Docx===>
-                             hotelCpic = document.createElement("tr");
-                              cpic = document.createElement("img");
-
-                              hotelcpicTD = document.createElement("td");
-
-                              cpic.height="160";
-                              cpic.width="600";
-                              cpic.src=`http://127.0.0.1:8000/uploads/${fdata.company_details[0].company_footer}`;
-                              hotelcpicTD.appendChild(cpic);
-
-                              hotelCpic.appendChild(hotelcpicTD);
-
-                              dParent.append(hotelCpic)
-
-                            // Adding Footer in Docx end===>
-
-
-                           // hotelName.style="margin-bottom:10px; padding:10px; border: 2px solid rgba(0,0,0,0.5)";
-                           // hotelDesc.style="margin-bottom:10px; padding:10px; border: 2px solid rgba(0,0,0,0.5)"
-
-
-
-                         })
-       // DOCX DOC MODAL DATA ENTRY end ===========>
-                       }
-
-                       else if(this.readyState !== 4){
-                         document.getElementById('loader-form').style.display="block";
-                         document.getElementById("err").style.display="none"
-                       }
-                       else if(this.status == 500 ){
-                         document.getElementById("err").style.display="block"
-                         document.getElementById('loader-form').style.display="none";
-                         document.getElementById("sub-btn").style.display="block"
-                       }
-                       else{
-                         document.getElementById("err").style.display="block"
-                         document.getElementById('loader-form').style.display="none";
-                         document.getElementById("sub-btn").style.display="block"
-
-                       }
-                     };
-                     xhttp.open("POST", "http://127.0.0.1:8000/get_form_data/");
-                     xhttp.send(JSON.stringify(formDataJson));
-                   }
-
-                   function downloadModalData() {
-                     // Create a new jsPDF instance
-                     var doc = new jsPDF();
-                       // Water Mark start
-
-             var backgroundImage = new Image();
-             backgroundImage.src =`http://127.0.0.1:8000/uploads/${globalFdata.company_details[0].company_logo_watermark}`
-             backgroundImage.style=`opacity:0.5`;
-             function addWatermark() {
-               var imgWidth = doc.internal.pageSize.getWidth();
-               var imgHeight = doc.internal.pageSize.getHeight();
-
-               doc.addImage(backgroundImage, '', 0, 0, imgWidth, imgHeight-30);
-             }
-             addWatermark();
-             // Water mark end
-
-
-                     // Get the modal content
-                     var modalContent = document.getElementById("exampleModalCenter");
-
-                     // Get the modal title and address
-                    //  var companyName = modalContent.querySelector("#mod_company");
-                    //  var address = modalContent.querySelector("#mod_address");
-                     var mehad = modalContent.querySelector("#mhead");
-
-
-                     // Get the date and trip summary details
-                     var date = modalContent.querySelector("#mod_date").innerText;
-                     var hotelAdd = modalContent.querySelector("#mod_HandA").innerText;
-                     var modid = modalContent.querySelector("#mod_id").innerText;
-                     var fromDate = modalContent.querySelector("#mod_fromdt").innerText;
-                     var toDate = modalContent.querySelector("#mod_todt").innerText;
-                     var adultTravellers = modalContent.querySelector("#mod_travAdult").innerText;
-                     var childTravellers = modalContent.querySelector("#mod_travChild").innerText;
-                     var totalRooms = modalContent.querySelector("#mod_totalRoom").innerText;
-
-                     // Set the document content
-                     doc.setFontSize(12);
-                    //  doc.fromHTML(companyName, 15, 25);
-                    //  doc.fromHTML(address, 15, 35);
-                     var imgData = new Image();
-                     imgData.src = `http://127.0.0.1:8000/uploads/${globalFdata.company_details[0].company_header}`;
-                     doc.addImage(imgData, "", 15, 20, 180, 50);
-
-                     doc.fromHTML("Date: " + date, 15, 80);
-                     doc.fromHTML("Quotation ID: " + modid, 120, 80);
-                     doc.fromHTML(mehad, 80, 100);
-                     doc.fromHTML("Date: " + fromDate + " To " + toDate, 15, 110);
-                     doc.fromHTML("Hotel Name and Address: " + hotelAdd, 15, 120);
-                     doc.fromHTML("Total Adult travellers: " + adultTravellers, 15, 130);
-                     doc.fromHTML("Total Child travellers: " + childTravellers, 15, 140);
-                     doc.fromHTML("Total Rooms: " + totalRooms, 15, 150);
-
-
-
-                     // Get the table data
-                     var table = modalContent.querySelector("table");
-                     var contra = modalContent.querySelector("#contract");
-
-                     // Generate the table using autoTable plugin
-                     var options = {
-                       startY: 170, // Set the initial y-position for the table
-                       margin: { top: 10 },
-                       didDrawPage: function (data) {
-                         // Add new page if the table exceeds the page height
-                         if (data.startY + data.table.height > data.page.height) {
-                           doc.addPage();
                          }
-                       },
-                     };
-
-                     doc.autoTable({
-                       html: table,
-                       startY: options.startY,
-                       margin: options.margin,
-                     });
-                     doc.autoTable({ html: contra, startY: doc.autoTable.previous.finalY + 10 });
-
-                     var footerimgData = new Image();
-                     footerimgData.src = `http://127.0.0.1:8000/uploads/${globalFdata.company_details[0].company_footer}`;
-                     doc.addImage(footerimgData, "", 15, doc.autoTable.previous.finalY + 2, 180, 50);
+                     // Checking dates Availabilty End=====>
 
 
+                         var roomData = [];
+                         var trooms = 0;
+                         function addRoom() {
+                           roomData = [];
+                           trooms += 1;
+                           // Get the container element for the room requests
+                           var roomContainer = document.getElementById("roomContainer");
+
+                           // Create a new div element for the room request
+                           var roomDiv = document.createElement("div");
+                           roomDiv.className = "room-request";
+
+                           // Clone the first room request div to create a new set of input fields
+                           var clonedRoomRequest = document.querySelector(".room-request:first-child").cloneNode(true);
+
+                           // Clear the values of the cloned input fields
+                           var clonedInputs = clonedRoomRequest.querySelectorAll("input, select");
+                           clonedInputs.forEach(function (input) {
+                             input.value = "";
+                             var inputId = input.getAttribute("id");
+                             var inputName = input.getAttribute("name");
+                             // Append a number to the id and name attributes
+                             input.setAttribute("id", inputId + roomContainer.childElementCount);
+                             input.setAttribute("name", inputName + roomContainer.childElementCount);
+                           });
+
+                           var clonedLabels = clonedRoomRequest.querySelectorAll("label");
+                           clonedLabels.forEach(function (label) {
+                             var labelFor = label.getAttribute("for");
+                             // Append a number to the for attribute
+                             label.setAttribute("for", labelFor + roomContainer.childElementCount);
+                           });
+
+                           // Append the cloned room request to the new div
+                           roomDiv.appendChild(clonedRoomRequest);
+
+                           // Append the new room div to the container
+                           roomContainer.appendChild(roomDiv);
+                           var room = {};
+                           for (x = 0; x <= trooms; x++) {
+                             let incount = x == 0 ? "" : x;
+
+                             room = {
+                               package_type: document.querySelector(`#package_type${incount}`).value,
+                               room_category: document.querySelector(`#room_category${incount}`).value,
+                               room_type: document.querySelector(`#room_type${incount}`).value,
+                               number_of_room_category: document.querySelector(`#number_of_room_category${incount}`).value,
+
+                               Adult_count: document.querySelector(`#Adult_count${incount}`).value,
+                               adult_resident_type: document.querySelector(`#adult_resident_type${incount}`).value,
+
+                               child_count: document.querySelector(`#child_count${incount}`).value,
+                               child_resident_type: document.querySelector(`#child_resident_type${incount}`).value,
 
 
-                     // Save the document
-                     doc.save("modal_data.pdf");
+                               old_child_sharing: document.querySelector(`#old_child_sharing${incount}`).value,
+                               young_child_sharing: document.querySelector(`#young_child_sharing${incount}`).value,
+                               // Add other room data fields here
+                             };
+
+                             if (roomData.length < trooms + 1) {
+                               roomData = [...roomData, room];
+                             }
+                           }
+                           console.log(roomData);
+                           // Add the room data to the roomData array
+                         }
+
+                         // Attach the addRoom function to the "Add Room" button's click event
+                         var addButton = document.querySelector("#addRoombtn");
+                         addButton.addEventListener("click", addRoom);
+
+                         // Add Room Finish
+
+                         function handlesubmit(e) {
+                           e.preventDefault();
+                           console.log("here")
+                           document.getElementById('loader-form').style.display="block";
+                           document.getElementById("err").style.display="none"
+                           document.getElementById("sub-btn").style.display="none"
+
+                           roomData = [];
+                           var room = {};
+                           for (x = 0; x <= trooms; x++) {
+                             let incount = x == 0 ? "" : x;
+
+                             room = {
+                               package_type: document.querySelector(`#package_type${incount}`).value,
+                               room_category: document.querySelector(`#room_category${incount}`).value,
+                               room_type: document.querySelector(`#room_type${incount}`).value,
+                               number_of_room_category: document.querySelector(`#number_of_room_category${incount}`).value,
+                               Adult_count: document.querySelector(`#Adult_count${incount}`).value,
+                               adult_resident_type: document.querySelector(`#adult_resident_type${incount}`).value,
+                               child_count: document.querySelector(`#child_count${incount}`).value,
+                               child_resident_type: document.querySelector(`#child_resident_type${incount}`).value,
+                               old_child_sharing: document.querySelector(`#old_child_sharing${incount}`).value,
+                               young_child_sharing: document.querySelector(`#young_child_sharing${incount}`).value,
+                               // Add other room data fields here
+                             };
+
+                             if (roomData.length < trooms + 1) {
+                               roomData = [...roomData, room];
+                             }
+                           }
+
+                           const FD = new FormData();
+                           let formData = new FormData(document.getElementById("quote")); //formdata object
+
+                           for (const [name, value] of formData.entries()) {
+                             if (
+                               !name.includes("Adult_count") &&
+                               !name.includes("adult_resident_type") &&
+                               !name.includes("child_count") &&
+                               !name.includes("child_resident_type") &&
+                               !name.includes("number_of_room_category") &&
+                               !name.includes("old_child_sharing") &&
+                               !name.includes("package_type") &&
+                               !name.includes("room_category") &&
+                               !name.includes("room_type") &&
+                               !name.includes("young_child_sharing")
+                             ) {
+                               FD.append(name, value);
+                             }
+                           }
+
+                           // FD.append('age', 20);
+                           const config = {
+                             headers: { "content-type": "multipart/form-data" },
+                           };
+
+                           let formDataJson = {};
+                           for (let [key, value] of FD.entries()) {
+                             formDataJson[key] = value;
+                           }
+
+                           formDataJson = { ...formDataJson, roomData };
+                           // Print the JSON string
+                           console.log(formDataJson);
+                           console.log(formDataJson.hotel_name);
+                           let totalRooms = 0;
+                           var xhttp = new XMLHttpRequest();
+                           xhttp.onreadystatechange = function () {
+                             if (this.readyState == 4 && this.status == 200 && this.status < 300) {
+
+             // PDF DOC MODAL DATA ENTRY start============>
+                               document.getElementById('loader-form').style.display="none";
+                               document.getElementById('prev-down').style.display="block";
+                               document.getElementById("err").style.display="none"
+                               document.getElementById("sub-btn").style.display="none"
+                               document.getElementById("itni-btn").style.display="block"
+
+
+                               console.log(this.responseText);
+                               let fdata = JSON.parse(this.responseText);
+                               globalFdata = fdata;
+                               console.log(fdata);
+                               let tdate = new Date();
+                              // imgs watermark, header, footer start===>
+                              document.getElementById("watermarkImg").style = `
+                                background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+                                  url('http://127.0.0.1:8000/uploads/${fdata.company_details[0].company_logo_watermark}');
+                                background-position: center;
+                                background-size: contain;
+                                background-repeat: no-repeat;
+                                `;
+
+                              document.getElementById("headerImg").src = `http://127.0.0.1:8000/uploads/${fdata.company_details[0].company_header}`;
+
+                              document.getElementById("footerImg").src = `http://127.0.0.1:8000/uploads/${fdata.company_details[0].company_footer}`;
+
+                              // imgs end ===>
+
+                              //  document.getElementById("mod_company").innerHTML = fdata.company_details[0].company_name;
+                              //  document.getElementById("mod_address").innerHTML = fdata.hotel_name +", "+ fdata.area + "," + fdata.country;
+                               document.getElementById("mod_HandA").innerHTML =fdata.hotel_name+ ", " + fdata.area + ", " + fdata.country;
+                               document.getElementById("mod_date").innerHTML = tdate.toLocaleDateString();
+                               document.getElementById("mod_id").innerHTML = fdata.quotation_id;
+                               document.getElementById("mod_fromdt").innerHTML = fdata.date_frm;
+                               document.getElementById("mod_todt").innerHTML = fdata.date_to;
+                               document.getElementById("mod_travAdult").innerHTML = fdata.total_adult_travellers;
+                               document.getElementById("mod_travChild").innerHTML = fdata.total_child_travellers;
+                               fdata.roomData.map((ini) => {
+                                 totalRooms += ini.total_rooms;
+                               });
+                               document.getElementById("mod_totalRoom").innerHTML = fdata.total_rooms;
+                               // document.getElementById("row1col1").innerHTML =
+                               //   fdata.hotel_name + ", " + fdata.package_type;
+                               // document.getElementById("row1col3").innerHTML = fdata.adult_res ;
+
+                               // // Row 2
+
+                               // document.getElementById("row2col1").innerHTML =
+                               //   fdata.hotel_name + ", " + fdata.package_type;
+                               // document.getElementById("row2col2").innerHTML = fdata.adult_res + fdata.adult_res;
+
+                               let totalMoney = 0;
+                               fdata.roomData.map((ini,i) => {
+
+
+                                 let tr = document.createElement("tr");
+                                 let td1 = document.createElement("td");
+                                 td1.innerHTML = ini.no_of_rooms_for_category_type;
+                                 let td2 = document.createElement("td");
+                                 td2.innerHTML = fdata.hotel_name + ", " + ini.package_type + ", " + ini.room_category;
+                                //  `${ini.young_child_sharing_rate?ini.young_child_sharing_rate+'(Total Young childern sharing rate) x'+fdata.itinery_data.todal_days_details[0].total_days+ '(Total Days)  =  '+ini.young_child_sharing_rate*fdata.itinery_data.todal_days_details[0].total_days :''}`+ `<br/>` +
+                                //  `${ini.young_child_sharing_rate?ini.old_child_sharing_rate+'(Total Old childern sharing rate) x'+fdata.itinery_data.todal_days_details[0].total_days+ '(Total Days)  =  '+ini.old_child_sharing_rate*fdata.itinery_data.todal_days_details[0].total_days :''}`;
+                                 let td3 = document.createElement("td");
+                                 td3.innerHTML = ini.currency=="KES"?ini.total_child_adult:"-";
+                                 let td4 = document.createElement("td");
+                                 td4.innerHTML = ini.currency!="KES"?ini.total_child_adult:"-";
+
+                                 tr.appendChild(td1);
+                                 tr.appendChild(td2);
+                                 tr.appendChild(td3);
+                                 tr.appendChild(td4);
+
+                                 document.getElementById("datatable").appendChild(tr);
+
+                                 let ttr=document.createElement("tr");
+                                 let ttd1 = document.createElement("td");
+                                 ttd1.innerHTML = "Total";
+                                 let ttd2 = document.createElement("td");
+                                 ttd2.innerHTML = "";
+                                 let ttd3 = document.createElement("td");
+                                 ttd3.innerHTML = fdata.total_kes;
+                                 let ttd4 = document.createElement("td");
+                                 ttd4.innerHTML = fdata.total_usd;
+
+                                 ttr.appendChild(ttd1);
+                                 ttr.appendChild(ttd2);
+                                 ttr.appendChild(ttd3);
+                                 ttr.appendChild(ttd4);
+                                 console.log(fdata.roomData.length)
+                                 console.log(i)
+                                 if(fdata.roomData.length==i+1){ console.log("here"); document.getElementById("datatable").appendChild(ttr);}
+                               });
+
+             // PDF DOC MODAL DATA ENTRY end============>
+
+            // DOCX DOC MODAL DATA ENTRY start ========>
+            let dParent =  document.getElementById("docxTable");
+                               let companyName, tripName;
+                                 companyName =document.createElement("tr");
+                                 tripName = document.createElement("tr");
+
+                                 // companyName.style="margin-bottom:10px; padding:10px; border: 2px solid rgba(0,0,0,0.5)";
+                                 // tripName.style="margin-bottom:10px; padding:10px; border: 2px solid rgba(0,0,0,0.5)";
+
+                                 let compTD, tripTD, compTDImg
+                                 compTD = document.createElement('td')
+                                 tripTD = document.createElement('td')
+                                 compTD.align = "center";
+                                 compTD.bgColor = "white";
+                                 compTDImg = document.createElement('img')
+                                 compTDImg.height="160";
+                                 compTDImg.width="600";
+                                 compTDImg.src=`http://127.0.0.1:8000/uploads/${fdata.company_details[0].company_header}`;
+
+                                 tripTD.align = "center";
+
+                                 compTD.appendChild(compTDImg);
+                                 companyName.appendChild(compTD);
+
+                                 tripTD.innerHTML = `<h5>Trip Name: 7 days in Savannah</h5>`;
+                                 tripName.appendChild(tripTD);
+
+                               dParent.append(companyName, tripName)
+                               let x = 0;
+                               fdata.itinery_data.todal_days_details.map((ini,i)=>{
+
+                                 let  hotelName, hotelDesc, hotelCpic;
+                                 hotelName = document.createElement("tr");
+                                 hotelDesc =document.createElement("tr");
+                                 hotelCpic = document.createElement("tr");
+
+                                 let cpic = document.createElement("img");
+
+                                 let hotelcpicTD = document.createElement("td");
+                                 let hotelTD = document.createElement("td");
+                                 let hoteldescTD = document.createElement("td");
+                                 hotelTD.align="center";
+                                 hotelTD.bgColor = "white";
+
+                                 hoteldescTD.align="center";
+
+
+                                   cpic.height="160";
+                                   cpic.width="600";
+                                   cpic.src="http://"+ini.receptionroom_pic;
+
+                                   hotelcpicTD.appendChild(cpic);
+                                   hotelTD.innerHTML = `<h5><font color="#121212"> Day ${i+1}: ${ini.hotel_name}</font></h5>`;
+                                   hoteldescTD.innerHTML = `<p>${ini.description_first_day}</p>`
+
+                                   hotelName.appendChild(hotelTD);
+                                   hotelDesc.appendChild(hoteldescTD);
+                                   hotelCpic.appendChild(hotelcpicTD);
+
+                                   dParent.append(hotelName, hotelDesc, hotelCpic);
+
+                             // Days Loop Start here====>
+                                 [...Array(ini.total_days-2)].map((m,n)=>{
+
+
+                                 hotelName = document.createElement("tr");
+                                 hotelDesc =document.createElement("tr");
+                                 hotelCpic = document.createElement("tr");
+
+                                 cpic = document.createElement("img");
+
+                                 hotelcpicTD = document.createElement("td");
+                                 hotelTD = document.createElement("td");
+                                 hoteldescTD = document.createElement("td");
+
+                                   hotelTD.align="center";
+                                   hotelTD.bgColor = "white";
+                                   hoteldescTD.align="center";
+
+                                   cpic.height="160";
+                                   cpic.width="600";
+
+                                   cpic.src="http://"+ini.bedroom_pic;
+
+                                   hotelcpicTD.appendChild(cpic);
+
+                                   hotelTD.innerHTML = `<h5><font color="#121212">Day ${n+2}: ${ini.hotel_name}</font></h5>`;
+                                   hoteldescTD.innerHTML = `<p>${ini.description_full_day}</p>`
+
+                                   hotelName.appendChild(hotelTD);
+                                   hotelDesc.appendChild(hoteldescTD);
+                                   hotelCpic.appendChild(hotelcpicTD);
+
+                                   dParent.append(hotelName, hotelDesc);
+
+                                 });
+                               // Days Loop End here====>
+
+                                   hotelName, hotelDesc, hotelCpic;
+                                   hotelName = document.createElement("tr");
+                                   hotelDesc =document.createElement("tr");
+                                   hotelCpic = document.createElement("tr");
+
+                                   cpic = document.createElement("img");
+
+                                   hotelcpicTD = document.createElement("td");
+                                   hotelTD = document.createElement("td");
+                                   hoteldescTD = document.createElement("td");
+                                     hotelTD.align="center";
+                                     hotelTD.bgColor = "white";
+                                     hoteldescTD.align="center";
+
+                                   cpic.height="160";
+                                   cpic.width="600";
+                                   cpic.src="http://"+ini.diningroom_pic;
+
+                                   hotelcpicTD.appendChild(cpic);
+
+                                   hotelTD.innerHTML = `<h5><font color="#121212">Day ${ini.total_days}: ${ini.hotel_name}</font></h5>`;
+                                   hoteldescTD.innerHTML = `<p>${ini.description_last_day}</p>`
+
+                                   hotelName.appendChild(hotelTD);
+                                   hotelDesc.appendChild(hoteldescTD);
+                                   hotelCpic.appendChild(hotelcpicTD);
+
+
+
+
+                                   dParent.append(hotelName, hotelDesc, hotelCpic)
+
+
+                                   // Adding trip includes
+
+                                    hotelName, hotelDesc;
+                                   hotelName = document.createElement("tr");
+                                   hotelDesc =document.createElement("tr");
+
+
+
+
+
+                                   hotelTD = document.createElement("td");
+                                   hoteldescTD = document.createElement("td");
+                                     hotelTD.align="center";
+                                     hotelTD.bgColor = "white";
+                                     hotelTD.align="center";
+
+
+
+                                   hotelTD.innerHTML = `<h5><font color="#121212">Trip excludes:</font></h5>`;
+                                   hoteldescTD.innerHTML = `<p>International airfares
+      visa fees,
+      drinks,
+      supreme bush meals,
+      balloon safari</p>`
+
+                                   hotelName.appendChild(hotelTD);
+                                   hotelDesc.appendChild(hoteldescTD);
+
+
+
+
+
+                                   dParent.append(hotelName, hotelDesc)
+
+
+                    // trip include ends here
+
+
+
+                    // optional includes
+
+                                    hotelName, hotelDesc;
+                                   hotelName = document.createElement("tr");
+                                   hotelDesc =document.createElement("tr");
+
+
+
+
+
+                                   hotelTD = document.createElement("td");
+                                   hoteldescTD = document.createElement("td");
+                                     hotelTD.align="center";
+                                     hotelTD.bgColor = "white";
+                                     hotelTD.align="center";
+
+
+
+                                   hotelTD.innerHTML = `<h5><font color="#121212">Optional Extras:</font></h5>`;
+                                   hoteldescTD.innerHTML = `<p>supreme bush meals at 120USD pp
+      balloon safari at 1000 USD pp</p>`
+
+                                   hotelName.appendChild(hotelTD);
+                                   hotelDesc.appendChild(hoteldescTD);
+
+
+
+
+
+                                   dParent.append(hotelName, hotelDesc)
+
+
+                    // optional include ends here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                  // Adding Footer in Docx===>
+                                   hotelCpic = document.createElement("tr");
+                                    cpic = document.createElement("img");
+
+                                    hotelcpicTD = document.createElement("td");
+
+                                    cpic.height="160";
+                                    cpic.width="600";
+                                    cpic.src=`http://127.0.0.1:8000/uploads/${fdata.company_details[0].company_footer}`;
+                                    hotelcpicTD.appendChild(cpic);
+
+                                    hotelCpic.appendChild(hotelcpicTD);
+
+                                    dParent.append(hotelCpic)
+
+                                  // Adding Footer in Docx end===>
+
+
+                                 // hotelName.style="margin-bottom:10px; padding:10px; border: 2px solid rgba(0,0,0,0.5)";
+                                 // hotelDesc.style="margin-bottom:10px; padding:10px; border: 2px solid rgba(0,0,0,0.5)"
+
+
+
+                               })
+             // DOCX DOC MODAL DATA ENTRY end ===========>
+                             }
+
+                             else if(this.readyState !== 4){
+                               document.getElementById('loader-form').style.display="block";
+                               document.getElementById("err").style.display="none"
+                             }
+                             else if(this.status == 500 ){
+                               document.getElementById("err").style.display="block"
+                               document.getElementById('loader-form').style.display="none";
+                               document.getElementById("sub-btn").style.display="block"
+                             }
+                             else{
+                               document.getElementById("err").style.display="block"
+                               document.getElementById('loader-form').style.display="none";
+                               document.getElementById("sub-btn").style.display="block"
+
+                             }
+                           };
+                           xhttp.open("POST", "http://127.0.0.1:8000/get_form_data/");
+                           xhttp.send(JSON.stringify(formDataJson));
+                         }
+
+                         function downloadModalData() {
+                           // Create a new jsPDF instance
+                           var doc = new jsPDF();
+                             // Water Mark start
+
+                   var backgroundImage = new Image();
+                   backgroundImage.src =`http://127.0.0.1:8000/uploads/${globalFdata.company_details[0].company_logo_watermark}`
+                   backgroundImage.style=`opacity:0.5`;
+                   function addWatermark() {
+                     var imgWidth = doc.internal.pageSize.getWidth();
+                     var imgHeight = doc.internal.pageSize.getHeight();
+
+                     doc.addImage(backgroundImage, '', 0, 0, imgWidth, imgHeight-30);
                    }
-                   var downloadButton = document.querySelector("#exampleModalCenter .modal-footer .btn-primary");
-                   downloadButton.addEventListener("click", downloadModalData);
+                   addWatermark();
+                   // Water mark end
+
+
+                           // Get the modal content
+                           var modalContent = document.getElementById("exampleModalCenter");
+
+                           // Get the modal title and address
+                          //  var companyName = modalContent.querySelector("#mod_company");
+                          //  var address = modalContent.querySelector("#mod_address");
+                           var mehad = modalContent.querySelector("#mhead");
+
+
+                           // Get the date and trip summary details
+                           var date = modalContent.querySelector("#mod_date").innerText;
+                           var hotelAdd = modalContent.querySelector("#mod_HandA").innerText;
+                           var modid = modalContent.querySelector("#mod_id").innerText;
+                           var fromDate = modalContent.querySelector("#mod_fromdt").innerText;
+                           var toDate = modalContent.querySelector("#mod_todt").innerText;
+                           var adultTravellers = modalContent.querySelector("#mod_travAdult").innerText;
+                           var childTravellers = modalContent.querySelector("#mod_travChild").innerText;
+                           var totalRooms = modalContent.querySelector("#mod_totalRoom").innerText;
+
+                           // Set the document content
+                           doc.setFontSize(12);
+                          //  doc.fromHTML(companyName, 15, 25);
+                          //  doc.fromHTML(address, 15, 35);
+                           var imgData = new Image();
+                           imgData.src = `http://127.0.0.1:8000/uploads/${globalFdata.company_details[0].company_header}`;
+                           doc.addImage(imgData, "", 15, 20, 180, 50);
+
+                           doc.fromHTML("Date: " + date, 15, 80);
+                           doc.fromHTML("Quotation ID: " + modid, 120, 80);
+                           doc.fromHTML(mehad, 80, 100);
+                           doc.fromHTML("Date: " + fromDate + " To " + toDate, 15, 110);
+                           doc.fromHTML("Hotel Name and Address: " + hotelAdd, 15, 120);
+                           doc.fromHTML("Total Adult travellers: " + adultTravellers, 15, 130);
+                           doc.fromHTML("Total Child travellers: " + childTravellers, 15, 140);
+                           doc.fromHTML("Total Rooms: " + totalRooms, 15, 150);
+
+
+
+                           // Get the table data
+                           var table = modalContent.querySelector("table");
+                           var contra = modalContent.querySelector("#contract");
+
+                           // Generate the table using autoTable plugin
+                           var options = {
+                             startY: 170, // Set the initial y-position for the table
+                             margin: { top: 10 },
+                             didDrawPage: function (data) {
+                               // Add new page if the table exceeds the page height
+                               if (data.startY + data.table.height > data.page.height) {
+                                 doc.addPage();
+                               }
+                             },
+                           };
+
+                           doc.autoTable({
+                             html: table,
+                             startY: options.startY,
+                             margin: options.margin,
+                           });
+                           doc.autoTable({ html: contra, startY: doc.autoTable.previous.finalY + 10 });
+
+                           var footerimgData = new Image();
+                           footerimgData.src = `http://127.0.0.1:8000/uploads/${globalFdata.company_details[0].company_footer}`;
+                           doc.addImage(footerimgData, "", 15, doc.autoTable.previous.finalY + 2, 180, 50);
+
+
+
+
+                           // Save the document
+                           doc.save("modal_data.pdf");
+                         }
+                         var downloadButton = document.querySelector("#exampleModalCenter .modal-footer .btn-primary");
+                         downloadButton.addEventListener("click", downloadModalData);
     </script>
 
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
